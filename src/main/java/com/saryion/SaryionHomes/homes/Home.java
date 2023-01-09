@@ -2,8 +2,10 @@ package com.saryion.SaryionHomes.homes;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 
 public class Home {
+    private Player player;
     private String name;
     private Location location;
     private Material icon = Material.GRASS_BLOCK;
@@ -31,7 +33,7 @@ public class Home {
         return location;
     }
 
-    public void setLocation(Location location) {
+    private void setLocation(Location location) {
         this.location = location;
     }
 
@@ -41,5 +43,20 @@ public class Home {
 
     public void setIcon(Material icon) {
         this.icon = icon;
+    }
+
+    public Player getOwner() {
+        return this.player;
+    }
+
+    public void gotoHouse(Player player) {
+        player.teleport(this.location);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof String)) return false;
+
+        return this.name.equals(obj);
     }
 }

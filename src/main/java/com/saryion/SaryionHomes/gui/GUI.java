@@ -5,7 +5,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 
-public class GUI {
+public abstract class GUI {
     public static void makeBorder(Material material, Inventory inventory) {
         var inventorySize = inventory.getSize();
         if ((inventorySize / 9) < 3) return;

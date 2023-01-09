@@ -9,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 
@@ -19,7 +18,7 @@ public class HomeListener implements Listener {
     }
 
     @EventHandler
-    public void OnPlayerJoin(PlayerJoinEvent e) {
+    private void OnPlayerJoin(PlayerJoinEvent e) {
         var player = e.getPlayer();
 
         if (!Homes.hasHomes(player)) {
@@ -41,14 +40,12 @@ public class HomeListener implements Listener {
         if (clickedItem == null || clickedItem.getType() == HomeGUI.borderMaterial) return;
 
         var houseName = clickedItem.getItemMeta().getDisplayName();
-        var homes = Homes.getHomes(player);
+        var home = Homes.getHomes(player).getHome(houseName);
 
-        for (var home : homes.getHomes()) {
-            if (!home.getName().equals(houseName)) continue;
-            player.teleport(home.getLocation());
-            player.sendMessage("You teleported to home " + houseName + ".");
-        }
+        if (home == null) return;
+        home.gotoHouse(player);
 
+        player.sendMessage("You teleported to home " + houseName + ".");
         e.getWhoClicked().closeInventory();
     }
 }
