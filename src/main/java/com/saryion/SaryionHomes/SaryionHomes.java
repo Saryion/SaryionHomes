@@ -4,6 +4,7 @@ import com.saryion.SaryionHomes.commands.CommandDeleteHouse;
 import com.saryion.SaryionHomes.commands.CommandHome;
 import com.saryion.SaryionHomes.commands.CommandSetHome;
 import com.saryion.SaryionHomes.listeners.HomeListener;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -16,11 +17,7 @@ public class SaryionHomes extends JavaPlugin {
         new CommandHome(this);
         new CommandSetHome();
         new CommandDeleteHouse();
+
         new HomeListener(this);
-    }
-
-    @Override
-    public void onDisable() {
-
     }
 }

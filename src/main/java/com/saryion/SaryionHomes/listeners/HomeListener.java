@@ -3,7 +3,9 @@ package com.saryion.SaryionHomes.listeners;
 import com.saryion.SaryionHomes.Homes;
 import com.saryion.SaryionHomes.SaryionHomes;
 import com.saryion.SaryionHomes.gui.HomeGUI;
+
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -27,18 +29,21 @@ public class HomeListener implements Listener {
     @EventHandler
     private void OnInventoryClick(InventoryClickEvent e) {
         e.setCancelled(true);
+        var player = (Player)e.getWhoClicked();
 
         if (!e.getView().getTitle().contains("Homes")) return;
-        if (e.getCurrentItem() == null) return;
-        if (e.getCurrentItem().getType() == HomeGUI.borderMaterial) return;
 
-        var houseName = e.getCurrentItem().getItemMeta().getDisplayName();
-        var homes = SaryionHomes.homeCache.get(e.getWhoClicked().getUniqueId().toString());
+        var clickedItem = e.getCurrentItem();
+        if (clickedItem == null) return;
+        if (clickedItem.getType() == HomeGUI.borderMaterial) return;
+
+        var houseName = clickedItem.getItemMeta().getDisplayName();
+        var homes = Homes.getHomes(player);
 
         for (var home : homes.getHomes()) {
             if (!home.getName().equals(houseName)) continue;
-            e.getWhoClicked().teleport(home.getLocation());
-            e.getWhoClicked().sendMessage("You teleported to home " + houseName + ".");
+            player.teleport(home.getLocation());
+            player.sendMessage("You teleported to home " + houseName + ".");
         }
 
         e.getWhoClicked().closeInventory();
