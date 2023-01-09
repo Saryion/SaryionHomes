@@ -6,13 +6,21 @@ import org.bukkit.inventory.ItemStack;
 
 
 public class GUI {
-    public void makeBorder(Material material, Inventory inventory) {
+    public static void makeBorder(Material material, Inventory inventory) {
         var inventorySize = inventory.getSize();
         if ((inventorySize / 9) < 3) return;
 
         var rows = inventorySize / 9;
         var border = new ItemStack(material);
-        border.getItemMeta().setDisplayName(" ");
+
+        try {
+            var meta = border.getItemMeta();
+            meta.setDisplayName(" ");
+            border.setItemMeta(meta);
+        }
+        catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
         for (var i = 0; i < inventorySize; i++) {
             var row = i / 9;

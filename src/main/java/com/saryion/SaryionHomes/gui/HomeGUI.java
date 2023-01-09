@@ -19,7 +19,7 @@ public class HomeGUI extends GUI {
     private final String inventoryName;
     public final static Material borderMaterial = Material.BLACK_STAINED_GLASS_PANE;
 
-    public HomeGUI(Player player, Homes homes, Plugin plugin) {
+    public HomeGUI(Player player, Homes homes) {
         this.player = player;
         this.homes = homes.getHomes();
         this.inventoryName = player.getName() + "'s Homes";

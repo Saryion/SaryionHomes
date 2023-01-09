@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 
@@ -30,8 +31,11 @@ public class HomeListener implements Listener {
     private void OnInventoryClick(InventoryClickEvent e) {
         var player = (Player)e.getWhoClicked();
 
-        if (!e.getView().getTitle().contains("Homes")) return;
+        if (!e.getView().getTitle().equals(player.getName() + "'s Homes")) return;
         e.setCancelled(true);
+
+        var clickedInventory = e.getClickedInventory();
+        if (e.getView().getBottomInventory() == clickedInventory) return;
 
         var clickedItem = e.getCurrentItem();
         if (clickedItem == null || clickedItem.getType() == HomeGUI.borderMaterial) return;

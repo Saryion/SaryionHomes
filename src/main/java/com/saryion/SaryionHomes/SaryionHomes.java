@@ -15,7 +15,7 @@ public class SaryionHomes extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        new CommandHome(this);
+        new CommandHome();
         new CommandSetHome();
         new CommandDeleteHome();
 

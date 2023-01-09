@@ -5,14 +5,10 @@ import com.saryion.SaryionHomes.gui.HomeGUI;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 public class CommandHome extends Command {
-    private final Plugin plugin;
-
-    public CommandHome(Plugin plugin) {
+    public CommandHome() {
         super("home", "/home", true);
-        this.plugin = plugin;
     }
 
     @Override
@@ -21,7 +17,7 @@ public class CommandHome extends Command {
         var homes = Homes.getHomes(player);
 
         if (args.length == 0) {
-            new HomeGUI(player, homes, plugin);
+            new HomeGUI(player, homes);
             return true;
         }
 
