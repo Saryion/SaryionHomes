@@ -1,0 +1,15 @@
+main: com.saryion.SaryionHomes.SaryionHomes
+name: SaryionHomes
+version: 1.0.0
+api-version: 1.19
+author: Saryion
+commands:
+  home:
+    description: Opens gui containing all of the players homes.
+    usage: /<command>
+  sethome:
+    description: Creates a new home.
+    usage: /<command>
+  delhome:
+    description: Deletes a home.
+    usage: /<command>
