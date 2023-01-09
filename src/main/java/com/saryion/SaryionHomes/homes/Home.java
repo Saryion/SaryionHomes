@@ -1,4 +1,4 @@
-package com.saryion.SaryionHomes;
+package com.saryion.SaryionHomes.homes;
 
 import org.bukkit.Location;
 import org.bukkit.Material;

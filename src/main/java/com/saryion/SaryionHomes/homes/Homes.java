@@ -1,4 +1,6 @@
-package com.saryion.SaryionHomes;
+package com.saryion.SaryionHomes.homes;
+
+import com.saryion.SaryionHomes.SaryionHomes;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -7,7 +9,7 @@ import java.util.ArrayList;
 
 public class Homes {
     private final String uuid;
-    private ArrayList<Home> homes = new ArrayList<>();;
+    private ArrayList<Home> homes = new ArrayList<>();
 
     public Homes(Player player) {
         this.uuid = player.getUniqueId().toString();

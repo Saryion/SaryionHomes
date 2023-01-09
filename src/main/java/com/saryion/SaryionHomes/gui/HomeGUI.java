@@ -1,7 +1,7 @@
 package com.saryion.SaryionHomes.gui;
 
-import com.saryion.SaryionHomes.Home;
-import com.saryion.SaryionHomes.Homes;
+import com.saryion.SaryionHomes.homes.Home;
+import com.saryion.SaryionHomes.homes.Homes;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -13,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeGUI {
+public class HomeGUI extends GUI {
     private final Player player;
     private final ArrayList<Home> homes;
     private final String inventoryName;
@@ -67,22 +67,6 @@ public class HomeGUI {
 
     private ItemStack buildItem(Material material, String name) {
         return this.buildItem(material, name, "");
-    }
-
-    private void makeBorder(Material material, Inventory inventory) {
-        var inventorySize = inventory.getSize();
-        if ((inventorySize / 9) < 3) return;
-
-        var rows = inventorySize / 9;
-
-        for (var i = 0; i < inventorySize; i++) {
-            var row = i / 9;
-            var column = (i % 9) + 1;
-
-            if (row == 0 || row == rows - 1 || column == 1 || column == 9) {
-                inventory.setItem(i, buildItem(material, " "));
-            }
-        }
     }
 
     private boolean isBorder(ItemStack item) {

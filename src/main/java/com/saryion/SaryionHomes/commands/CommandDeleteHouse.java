@@ -1,6 +1,6 @@
 package com.saryion.SaryionHomes.commands;
 
-import com.saryion.SaryionHomes.Homes;
+import com.saryion.SaryionHomes.homes.Homes;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

@@ -1,6 +1,6 @@
 package com.saryion.SaryionHomes.listeners;
 
-import com.saryion.SaryionHomes.Homes;
+import com.saryion.SaryionHomes.homes.Homes;
 import com.saryion.SaryionHomes.SaryionHomes;
 import com.saryion.SaryionHomes.gui.HomeGUI;
 
@@ -34,8 +34,7 @@ public class HomeListener implements Listener {
         if (!e.getView().getTitle().contains("Homes")) return;
 
         var clickedItem = e.getCurrentItem();
-        if (clickedItem == null) return;
-        if (clickedItem.getType() == HomeGUI.borderMaterial) return;
+        if (clickedItem == null || clickedItem.getType() == HomeGUI.borderMaterial) return;
 
         var houseName = clickedItem.getItemMeta().getDisplayName();
         var homes = Homes.getHomes(player);
