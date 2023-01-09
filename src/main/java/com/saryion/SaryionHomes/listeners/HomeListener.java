@@ -28,10 +28,10 @@ public class HomeListener implements Listener {
 
     @EventHandler
     private void OnInventoryClick(InventoryClickEvent e) {
-        e.setCancelled(true);
         var player = (Player)e.getWhoClicked();
 
         if (!e.getView().getTitle().contains("Homes")) return;
+        e.setCancelled(true);
 
         var clickedItem = e.getCurrentItem();
         if (clickedItem == null || clickedItem.getType() == HomeGUI.borderMaterial) return;
