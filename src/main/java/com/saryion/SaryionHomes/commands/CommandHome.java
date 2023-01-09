@@ -6,7 +6,7 @@ import com.saryion.SaryionHomes.gui.HomeGUI;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandHome extends Command {
+public final class CommandHome extends Command {
     public CommandHome() {
         super("home", "/home", true);
     }

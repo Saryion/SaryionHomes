@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeGUI extends GUI {
+public final class HomeGUI extends GUI {
     private final Player player;
     private final ArrayList<Home> homes;
     private final String inventoryName;

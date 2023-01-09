@@ -58,14 +58,6 @@ public class Homes {
         return uuid;
     }
 
-    public boolean isOwner(Player player) {
-        return player.getUniqueId().toString().equals(this.getUUID());
-    }
-
-    public boolean isOwner(String uuid) {
-        return uuid.equals(this.getUUID());
-    }
-
     public static boolean hasHomes(Player player) {
         var homes = SaryionHomes.homeCache.get(player.getUniqueId().toString());
         return homes != null;

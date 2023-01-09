@@ -12,7 +12,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 
-public class HomeListener implements Listener {
+public final class HomeListener implements Listener {
     public HomeListener(Plugin plugin) {
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

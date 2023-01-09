@@ -4,16 +4,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 
-public abstract class Command extends BukkitCommand implements CommandExecutor {
+public abstract class Command implements CommandExecutor {
     private final String cmd;
     private final String usage;
     private boolean isPlayer;
 
     public Command(String cmd, String usage) {
-        super(cmd);
         this.cmd = cmd;
         this.usage = usage;
         this.setup();
@@ -24,7 +22,7 @@ public abstract class Command extends BukkitCommand implements CommandExecutor {
         this.isPlayer = isPlayer;
     }
 
-    public void setup() {
+    private void setup() {
         Bukkit.getPluginCommand(this.cmd).setExecutor(this);
     }
 
@@ -37,18 +35,8 @@ public abstract class Command extends BukkitCommand implements CommandExecutor {
         this.send(sender, prefix + msg);
     }
 
-    @Override
-    public String getUsage() {
-        return this.usage;
-    }
-
     public void sendUsage(CommandSender sender) {
-        this.send(sender, this.getUsage());
-    }
-
-    @Override
-    public boolean execute(CommandSender commandSender, String s, String[] strings) {
-        return true;
+        this.send(sender, this.usage);
     }
 
     @Override

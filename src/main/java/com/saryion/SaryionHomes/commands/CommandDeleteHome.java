@@ -5,7 +5,7 @@ import com.saryion.SaryionHomes.homes.Homes;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CommandDeleteHome extends Command {
+public final class CommandDeleteHome extends Command {
     public CommandDeleteHome() {
         super("delhome", "/delhome <home>", true);
     }
