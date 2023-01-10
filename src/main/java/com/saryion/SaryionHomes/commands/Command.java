@@ -1,6 +1,6 @@
 package com.saryion.SaryionHomes.commands;
 
-import org.bukkit.Bukkit;
+import com.saryion.SaryionHomes.SaryionHomes;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,7 +23,7 @@ public abstract class Command implements CommandExecutor {
     }
 
     private void setup() {
-        Bukkit.getPluginCommand(this.cmd).setExecutor(this);
+        SaryionHomes.instance.getCommand(this.cmd).setExecutor(this);
     }
 
 
@@ -32,7 +32,7 @@ public abstract class Command implements CommandExecutor {
     }
 
     public void send(CommandSender sender, String msg, String prefix) {
-        this.send(sender, prefix + msg);
+        this.send(sender, prefix + " " + msg);
     }
 
     public void sendUsage(CommandSender sender) {

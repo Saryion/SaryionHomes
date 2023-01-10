@@ -5,7 +5,6 @@ import com.saryion.SaryionHomes.util.Lang;
 import com.saryion.SaryionHomes.SaryionHomes;
 import com.saryion.SaryionHomes.gui.HomeGUI;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 
 public final class LHome implements Listener {
     public LHome(Plugin plugin) {
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+        SaryionHomes.instance.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler

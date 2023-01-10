@@ -23,7 +23,7 @@ public final class CommandHome extends Command {
 
         var home = HomeHandler.getHome(player, args[0]);
         if (home == null) {
-            send(player, Lang.HOME_TELEPORTED, Lang.PREFIX);
+            send(player, Lang.HOME_NONE, Lang.PREFIX);
             return true;
         }
 

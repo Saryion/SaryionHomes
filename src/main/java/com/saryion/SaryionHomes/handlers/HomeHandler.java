@@ -31,6 +31,7 @@ public abstract class HomeHandler {
 
     public static void removeHome(Player player, String name) {
         var homes = getHomes(player);
+        if (homes.isEmpty()) return;
 
         for (var i = 0; i < homes.size(); i++) {
             if (!homes.get(i).getName().equalsIgnoreCase(name)) continue;

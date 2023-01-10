@@ -35,6 +35,7 @@ public final class HomeGUI extends GUI {
 
     private void populate(Inventory inventory) {
         var homes = this.homes;
+        if (homes.isEmpty()) return;
 
         for (var home : homes) {
             for (var i = 0; i < inventory.getSize(); i++) {
