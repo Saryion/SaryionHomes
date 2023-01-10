@@ -1,18 +1,18 @@
 package com.saryion.SaryionHomes.handlers;
 
 import com.saryion.SaryionHomes.SaryionHomes;
-import com.saryion.SaryionHomes.util.Home;
+import com.saryion.SaryionHomes.interfaces.IHome;
 
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 
 public abstract class HomeHandler {
-    public static ArrayList<Home> getHomes(Player player) {
+    public static ArrayList<IHome> getHomes(Player player) {
         return SaryionHomes.homeCache.get(player.getUniqueId().toString());
     }
 
-    public static Home getHome(Player player, String name) {
+    public static IHome getHome(Player player, String name) {
         var homes = SaryionHomes.homeCache.get(player.getUniqueId().toString());
         if (homes.isEmpty()) return null;
 
@@ -25,7 +25,7 @@ public abstract class HomeHandler {
         return null;
     }
 
-    public static void addHome(Player player, Home home) {
+    public static void addHome(Player player, IHome home) {
         getHomes(player).add(home);
     }
 
