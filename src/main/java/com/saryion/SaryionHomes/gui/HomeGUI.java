@@ -1,7 +1,7 @@
 package com.saryion.SaryionHomes.gui;
 
-import com.saryion.SaryionHomes.homes.Home;
-import com.saryion.SaryionHomes.homes.Homes;
+import com.saryion.SaryionHomes.handlers.HomeHandler;
+import com.saryion.SaryionHomes.util.Home;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -18,9 +18,9 @@ public final class HomeGUI extends GUI {
     private final String inventoryName;
     public final static Material borderMaterial = Material.BLACK_STAINED_GLASS_PANE;
 
-    public HomeGUI(Player player, Homes homes) {
+    public HomeGUI(Player player) {
         this.player = player;
-        this.homes = homes.getHomes();
+        this.homes = HomeHandler.getHomes(player);
         this.inventoryName = player.getName() + "'s Homes";
         this.setup();
     }

@@ -1,6 +1,7 @@
 package com.saryion.SaryionHomes.commands;
 
-import com.saryion.SaryionHomes.homes.Homes;
+import com.saryion.SaryionHomes.handlers.HomeHandler;
+import com.saryion.SaryionHomes.util.Lang;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -19,15 +20,14 @@ public final class CommandDeleteHome extends Command {
             return true;
         }
 
-        var homes = Homes.getHomes(player);
-        var home = homes.getHome(args[0]);
+        var home = HomeHandler.getHome(player, args[0]);
         if (home == null) {
-            send(player, "You don't have a home called " + args[0] + ".");
+            send(player, Lang.HOME_NONE, Lang.PREFIX);
             return true;
         }
 
-        homes.removeHome(args[0]);
-        send(player, "Home named " + args[0] + " has been deleted.");
+        HomeHandler.removeHome(player, args[0]);
+        send(player, Lang.HOME_DELETED, Lang.PREFIX);
         return true;
     }
 }

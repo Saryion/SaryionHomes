@@ -1,7 +1,10 @@
 package com.saryion.SaryionHomes.commands;
 
-import com.saryion.SaryionHomes.homes.Homes;
+import com.saryion.SaryionHomes.handlers.HomeHandler;
+import com.saryion.SaryionHomes.util.Home;
+import com.saryion.SaryionHomes.util.Lang;
 
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -18,15 +21,14 @@ public class CommandSetHome extends Command {
             return true;
         }
 
-        var homes = Homes.getHomes(player);
         var homeName = args[0];
-
-        if (homes.getHome(homeName) != null) {
-            send(player, "&cYou already have a home named " + homeName + ".");
+        if (HomeHandler.hasHome(player, homeName)) {
+            send(player, Lang.HOME_EXISTS, Lang.PREFIX);
             return true;
         }
 
-        homes.addHome(homeName, player.getLocation());
+        var home = new Home(homeName, player.getLocation(), Material.GRASS_BLOCK, player);
+        HomeHandler.addHome(player, home);
         return true;
     }
 }

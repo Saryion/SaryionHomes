@@ -1,6 +1,7 @@
 package com.saryion.SaryionHomes.listeners;
 
-import com.saryion.SaryionHomes.homes.Homes;
+import com.saryion.SaryionHomes.handlers.HomeHandler;
+import com.saryion.SaryionHomes.util.Lang;
 import com.saryion.SaryionHomes.SaryionHomes;
 import com.saryion.SaryionHomes.gui.HomeGUI;
 
@@ -12,8 +13,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 
-public final class HomeListener implements Listener {
-    public HomeListener(Plugin plugin) {
+import java.util.ArrayList;
+
+public final class LHome implements Listener {
+    public LHome(Plugin plugin) {
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
@@ -21,8 +24,8 @@ public final class HomeListener implements Listener {
     private void OnPlayerJoin(PlayerJoinEvent e) {
         var player = e.getPlayer();
 
-        if (!Homes.hasHomes(player)) {
-            SaryionHomes.homeCache.put(player.getUniqueId().toString(), new Homes(player));
+        if (HomeHandler.getHomes(player) == null) {
+            SaryionHomes.homeCache.put(player.getUniqueId().toString(), new ArrayList<>());
         }
     }
 
@@ -40,12 +43,12 @@ public final class HomeListener implements Listener {
         if (clickedItem == null || clickedItem.getType() == HomeGUI.borderMaterial) return;
 
         var houseName = clickedItem.getItemMeta().getDisplayName();
-        var home = Homes.getHomes(player).getHome(houseName);
+        var home = HomeHandler.getHome(player, houseName);
 
         if (home == null) return;
-        home.gotoHouse(player);
+        home.teleport(player);
 
-        player.sendMessage("You teleported to home " + houseName + ".");
+        player.sendMessage(Lang.HOME_TELEPORTED);
         e.getWhoClicked().closeInventory();
     }
 }

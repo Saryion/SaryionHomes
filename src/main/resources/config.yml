@@ -1,0 +1,6 @@
+lang:
+  prefix: "&6[HOMES]:"
+  home-teleported: "&aYou teleported to your home."
+  home-none: "&cYou don't own a home with this name."
+  home-deleted: "&aYour home has been deleted."
+  home-exists: "&cYou already have a home with this name."
